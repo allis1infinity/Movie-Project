@@ -1,6 +1,6 @@
 from random import choice
-from movie_fetching import fetch_data
-from movie_storage_sql import add_movie, list_movies, delete_movie, update_movie
+from movie_storage.movie_fetching import fetch_data
+from movie_storage.movie_storage_sql import add_movie, list_movies, delete_movie, update_movie
 from movies_web_generator import create_movie_webpage
 
 def menu_option():
@@ -55,11 +55,11 @@ def add_new_movie():
             
             return add_movie(title, year, rating, poster)
         except KeyError as error:
-            print(f"Error processing data: {error}")
-            return None
+            return f"Error processing data: {error}"
+
     else:
-        print(f"Movie with the title '{movie_to_add}' was not found.")
-        return None
+        return f"Movie with the title '{movie_to_add}' was not found."
+
 
 
 
@@ -70,7 +70,12 @@ def delete_specific_movie():
     Deletes a movie from the database.
     """
     movie_to_delete = input("Enter the movie you want to delete: ").strip()
-    return delete_movie(movie_to_delete)
+    movies = list_movies()
+
+    if movie_to_delete in movies:
+        return delete_movie(movie_to_delete)
+    else:
+        return f"Movie '{movie_to_delete}' was not found."
 
 
 def update_specific_movie():

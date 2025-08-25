@@ -1,4 +1,4 @@
-from movie_storage_sql import list_movies
+from movie_storage.movie_storage_sql import list_movies
 
 
 def serialize_movie(title, movie_info):
