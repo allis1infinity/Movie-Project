@@ -1,0 +1,22 @@
+My Movie App
+This is a small app that helps you manage your movie collection. It can:
+
+find information about movies;
+save data to a database;
+create a webpage with your movies.
+
+How to Run It:
+Install the necessary files:
+In the terminal, enter this command:
+pip install -r requirements.txt
+
+Add your key:
+Create a .env file in the app folder.
+Add your key from the OMDb API website to it:
+API_KEY="your_key"
+
+Run the program:
+In the terminal enter:
+python main.py
+
+Just pick a number from the menu to get started!
